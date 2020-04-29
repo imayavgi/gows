@@ -8,17 +8,14 @@ go build ./cmd/gows <- this creates gows binary in current directory
 
 import (
 	"fmt"
+	"net/http"
 
-	"github.com/imayavgi/gows/internal/pkg/models"
+	"github.com/imayavgi/gows/internal/pkg/controllers"
 )
 
 func main() {
 	fmt.Println("Go Web Services command ")
-	u := models.User{
-		ID:        2,
-		FirstName: "Imaya",
-		LastName:  "Kulothungan",
-	}
 
-	fmt.Println(u)
+	controllers.RegisterControllers()
+	http.ListenAndServe(":9999", nil)
 }
